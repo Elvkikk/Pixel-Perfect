@@ -2,22 +2,42 @@ $npm-red: #cb3837;
 $npm-yellow: #f7c94b;
 $npm-black: #231f20;
 
-.heroPanel {
-  min-height: 440px;
-  display: grid;
-  place-items: center;
-  padding: 82px 24px;
+.contentNarrow {
+  max-width: 760px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.heroMarketingSection {
+  isolation: isolate;
+  position: relative;
+  overflow: hidden;
   color: #fff;
   text-align: center;
-  background:
-    radial-gradient(circle at 50% -20%, rgba(255, 255, 255, 0.18), transparent 38%),
-    linear-gradient(135deg, #d63b32 0%, #c43535 45%, #b82e30 100%);
+  background: linear-gradient(135deg, #d63b32 0%, #c43535 45%, #b82e30 100%);
+}
+
+.heroMarketingInner {
+  position: relative;
+  z-index: 1;
+  max-width: 1040px;
+  margin: 0 auto;
+  padding: 82px 24px 94px;
 
   h1 {
     margin: 0;
     font-size: clamp(52px, 7vw, 88px);
     font-weight: 800;
     line-height: 1.02;
+    letter-spacing: 0;
+  }
+
+  h2 {
+    max-width: 620px;
+    margin: 0 auto;
+    font-size: clamp(32px, 4vw, 48px);
+    font-weight: 800;
+    line-height: 1.15;
     letter-spacing: 0;
   }
 
@@ -30,39 +50,12 @@ $npm-black: #231f20;
   }
 }
 
-.contentNarrow {
-  max-width: 760px;
-  margin: 0 auto;
-  text-align: center;
-}
-
-.introSection {
-  isolation: isolate;
-  position: relative;
-  overflow: hidden;
-  padding: 74px 24px 78px;
-  text-align: center;
-  background: #fff;
-
-  .contentNarrow {
-    position: relative;
-    z-index: 1;
-  }
-
-  h2 {
-    max-width: 620px;
-    margin: 0 auto;
-    color: $npm-black;
-    font-size: clamp(32px, 4vw, 48px);
-    font-weight: 800;
-    line-height: 1.15;
-    letter-spacing: 0;
-  }
+.marketingContent {
+  margin-top: 78px;
 
   p {
     max-width: 610px;
-    margin: 24px auto 0;
-    color: #4b4b4b;
+    color: rgba(255, 255, 255, 0.9);
     font-size: 18px;
     line-height: 1.7;
   }
@@ -72,10 +65,9 @@ $npm-black: #231f20;
   position: absolute;
   inset: 0;
   z-index: 0;
-  opacity: 0.9;
-  mix-blend-mode: multiply;
+  opacity: 0.85;
   pointer-events: none;
-  mask-image: linear-gradient(to bottom, transparent 0%, #000 22%, #000 78%, transparent 100%);
+  mask-image: linear-gradient(to bottom, transparent 0%, #000 18%, #000 84%, transparent 100%);
 
   canvas {
     display: block;
@@ -115,9 +107,9 @@ $npm-black: #231f20;
   background: $npm-yellow;
 }
 
-.buttonRed {
-  background: $npm-red;
-  color: #fff;
+.buttonLight {
+  background: #fff;
+  color: $npm-red;
 }
 
 .fadeUp {
@@ -141,6 +133,22 @@ $npm-black: #231f20;
 }
 
 @media (max-width: 560px) {
+  .heroMarketingInner {
+    padding: 64px 18px 76px;
+
+    h1 {
+      font-size: clamp(44px, 15vw, 64px);
+    }
+
+    p {
+      font-size: 18px;
+    }
+  }
+
+  .marketingContent {
+    margin-top: 64px;
+  }
+
   .ctaRow {
     flex-direction: column;
     align-items: center;

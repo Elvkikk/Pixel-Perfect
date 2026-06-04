@@ -19,9 +19,16 @@ export function Footer() {
   return (
     <footer className={styles.siteFooter}>
       <div className={styles.footerInner}>
-        <a className={styles.footerMark} href="#" aria-label="npm home">
-          npm
-        </a>
+        <div className={styles.footerBrand}>
+          <a className={styles.footerMark} href="#" aria-label="npm home">
+            npm
+          </a>
+          <a className={styles.githubLink} href="#" aria-label="GitHub">
+            <svg aria-hidden="true" viewBox="0 0 19 19">
+              <use href="/icons.svg#github-icon" />
+            </svg>
+          </a>
+        </div>
 
         <div className={styles.linkGrid}>
           {linkGroups.map((group) => (
@@ -36,6 +43,7 @@ export function Footer() {
           ))}
         </div>
       </div>
+      <div className={styles.colorBar} />
     </footer>
   )
 }
