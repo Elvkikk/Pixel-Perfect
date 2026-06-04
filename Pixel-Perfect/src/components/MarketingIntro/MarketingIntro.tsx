@@ -1,6 +1,10 @@
+import { useRef } from 'react'
+import Antigravity from '../Antigravity'
 import styles from './MarketingIntro.module.scss'
 
 export function MarketingIntro() {
+  const introSectionRef = useRef<HTMLElement>(null)
+
   return (
     <>
       <section className={styles.heroPanel}>
@@ -14,7 +18,28 @@ export function MarketingIntro() {
         </div>
       </section>
 
-      <section className={styles.introSection}>
+      <section ref={introSectionRef} className={styles.introSection}>
+        <div className={styles.antigravityLayer} aria-hidden="true">
+          <Antigravity
+            eventSource={introSectionRef}
+            count={300}
+            magnetRadius={6}
+            ringRadius={7}
+            waveSpeed={0.4}
+            waveAmplitude={0.75}
+            particleSize={1.25}
+            lerpSpeed={0.035}
+            color="#cb3837"
+            autoAnimate
+            particleVariance={0.7}
+            rotationSpeed={0}
+            depthFactor={1}
+            pulseSpeed={2}
+            particleShape="capsule"
+            fieldStrength={10}
+            opacity={0.34}
+          />
+        </div>
         <div className={`${styles.contentNarrow} ${styles.fadeUp} ${styles.fadeUpLate}`}>
           <h2>Take your JavaScript development up a notch</h2>
           <p>

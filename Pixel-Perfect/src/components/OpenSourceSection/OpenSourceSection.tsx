@@ -1,12 +1,16 @@
+import { useRef } from 'react'
 import Antigravity from '../Antigravity'
 import styles from './OpenSourceSection.module.scss'
 
 export function OpenSourceSection() {
+  const sectionRef = useRef<HTMLElement>(null)
+
   return (
     <>
-      <section className={styles.openSourceSection}>
+      <section ref={sectionRef} className={styles.openSourceSection}>
         <div className={styles.antigravityLayer} aria-hidden="true">
           <Antigravity
+            eventSource={sectionRef}
             count={300}
             magnetRadius={6}
             ringRadius={7}

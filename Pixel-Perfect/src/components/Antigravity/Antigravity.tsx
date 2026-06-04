@@ -1,6 +1,7 @@
-import { Canvas, useFrame, useThree } from '@react-three/fiber'
+import { Canvas, events as createPointerEvents, useFrame, useThree } from '@react-three/fiber'
 import { useMemo, useRef } from 'react'
-import type { FC } from 'react'
+import type { FC, RefObject } from 'react'
+import type { DomEvent, RootState, RootStore } from '@react-three/fiber'
 import * as THREE from 'three'
 
 interface AntigravityProps {
@@ -20,6 +21,7 @@ interface AntigravityProps {
   particleShape?: 'capsule' | 'sphere' | 'box' | 'tetrahedron'
   fieldStrength?: number
   opacity?: number
+  eventSource?: RefObject<HTMLElement | null>
 }
 
 interface Particle {
@@ -117,8 +119,12 @@ const AntigravityInner: FC<AntigravityProps> = ({
 
     if (autoAnimate && Date.now() - lastMouseMoveTime.current > 2000) {
       const time = state.clock.getElapsedTime()
-      destX = Math.sin(time * 0.5) * (v.width / 4)
-      destY = Math.cos(time * 0.5 * 2) * (v.height / 4)
+      const edgeInset = Math.max(ringRadius * 0.65, 1)
+      const travelX = Math.max(v.width / 2 - edgeInset, v.width * 0.34)
+      const travelY = Math.max(v.height / 2 - edgeInset, v.height * 0.34)
+
+      destX = Math.sin(time * 0.42) * travelX
+      destY = Math.sin(time * 0.67 + Math.PI / 3) * travelY
     }
 
     const smoothFactor = 0.05
@@ -200,9 +206,36 @@ const AntigravityInner: FC<AntigravityProps> = ({
   )
 }
 
-const Antigravity: FC<AntigravityProps> = (props) => {
+const Antigravity: FC<AntigravityProps> = ({ eventSource, ...props }) => {
+  const sectionEvents = useMemo(() => {
+    if (!eventSource) return undefined
+
+    return (store: RootStore) => {
+      const defaultEvents = createPointerEvents(store)
+
+      return {
+        ...defaultEvents,
+        compute: (event: DomEvent, state: RootState) => {
+          const bounds = eventSource.current?.getBoundingClientRect()
+
+          if (!bounds) return
+
+          const x = (event as MouseEvent).clientX - bounds.left
+          const y = (event as MouseEvent).clientY - bounds.top
+
+          state.pointer.set((x / bounds.width) * 2 - 1, -(y / bounds.height) * 2 + 1)
+          state.raycaster.setFromCamera(state.pointer, state.camera)
+        },
+      }
+    }
+  }, [eventSource])
+
   return (
-    <Canvas camera={{ position: [0, 0, 50], fov: 35 }}>
+    <Canvas
+      camera={{ position: [0, 0, 50], fov: 35 }}
+      eventSource={eventSource as RefObject<HTMLElement>}
+      events={sectionEvents}
+    >
       <AntigravityInner {...props} />
     </Canvas>
   )
