@@ -1,0 +1,109 @@
+$npm-red: #cb3837;
+$npm-black: #231f20;
+
+.openSourceSection {
+  position: relative;
+  overflow: hidden;
+  padding: 26px 0 92px;
+  background: #fff;
+  text-align: center;
+
+  h2 {
+    margin: 0;
+    color: $npm-black;
+    font-size: clamp(30px, 4vw, 45px);
+    font-weight: 800;
+    line-height: 1.16;
+    letter-spacing: 0;
+  }
+
+  p {
+    margin: 24px auto 0;
+    color: #4b4b4b;
+    font-size: 17px;
+    line-height: 1.75;
+  }
+}
+
+.antigravityLayer {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  opacity: 0.9;
+  mix-blend-mode: multiply;
+  pointer-events: none;
+  mask-image: linear-gradient(to bottom, transparent 0%, #000 22%, #000 78%, transparent 100%);
+
+  canvas {
+    display: block;
+  }
+}
+
+.contentWide {
+  position: relative;
+  z-index: 1;
+  max-width: 1040px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.contentNarrow {
+  max-width: 760px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.hexIllustration {
+  display: grid;
+  place-items: center;
+  width: 168px;
+  height: 168px;
+  margin: 0 auto 42px;
+  opacity: 0.98;
+
+  &::before {
+    content: '';
+    width: 142px;
+    height: 124px;
+    background: linear-gradient(135deg, #f7c94b, #ef8236 52%, $npm-red);
+    clip-path: polygon(25% 0, 75% 0, 100% 50%, 75% 100%, 25% 100%, 0 50%);
+    box-shadow: 0 9px 22px rgba(203, 56, 55, 0.24);
+    animation: softFloat 6s ease-in-out infinite;
+  }
+
+  span {
+    position: absolute;
+    width: 62px;
+    height: 54px;
+    background: #fff;
+    clip-path: polygon(25% 0, 75% 0, 100% 50%, 75% 100%, 25% 100%, 0 50%);
+  }
+}
+
+.colorBar {
+  height: 10px;
+  background: linear-gradient(90deg, #f7c94b 0 12%, #ef8236 12% 32%, #cb3837 32% 58%, #8956a4 58% 78%, #3fae52 78% 100%);
+  background-size: 160% 100%;
+  animation: colorShift 12s ease-in-out infinite alternate;
+}
+
+@keyframes softFloat {
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
+@keyframes colorShift {
+  to {
+    background-position: 100% 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hexIllustration,
+  .colorBar {
+    animation-duration: 1ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 1ms !important;
+  }
+}

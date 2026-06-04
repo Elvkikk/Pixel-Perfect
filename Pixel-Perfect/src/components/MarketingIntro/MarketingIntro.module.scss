@@ -1,0 +1,140 @@
+$npm-red: #cb3837;
+$npm-yellow: #f7c94b;
+$npm-black: #231f20;
+
+.heroPanel {
+  min-height: 440px;
+  display: grid;
+  place-items: center;
+  padding: 82px 24px;
+  color: #fff;
+  text-align: center;
+  background:
+    radial-gradient(circle at 50% -20%, rgba(255, 255, 255, 0.18), transparent 38%),
+    linear-gradient(135deg, #d63b32 0%, #c43535 45%, #b82e30 100%);
+
+  h1 {
+    margin: 0;
+    font-size: clamp(52px, 7vw, 88px);
+    font-weight: 800;
+    line-height: 1.02;
+    letter-spacing: 0;
+  }
+
+  p {
+    max-width: 650px;
+    margin: 24px auto 0;
+    font-size: 20px;
+    line-height: 1.55;
+    font-weight: 500;
+  }
+}
+
+.contentNarrow {
+  max-width: 760px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.introSection {
+  padding: 74px 24px 78px;
+  text-align: center;
+  background: #fff;
+
+  h2 {
+    max-width: 620px;
+    margin: 0 auto;
+    color: $npm-black;
+    font-size: clamp(32px, 4vw, 48px);
+    font-weight: 800;
+    line-height: 1.15;
+    letter-spacing: 0;
+  }
+
+  p {
+    max-width: 610px;
+    margin: 24px auto 0;
+    color: #4b4b4b;
+    font-size: 18px;
+    line-height: 1.7;
+  }
+}
+
+.ctaRow {
+  display: flex;
+  justify-content: center;
+  gap: 18px;
+  margin-top: 34px;
+}
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 220px;
+  min-height: 56px;
+  padding: 0 26px;
+  color: $npm-black;
+  font-size: 17px;
+  font-weight: 800;
+  text-decoration: none;
+  box-shadow: 0 2px 3px rgba(0, 0, 0, 0.22);
+  transition:
+    transform 160ms ease,
+    box-shadow 160ms ease;
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 12px rgba(0, 0, 0, 0.22);
+  }
+}
+
+.buttonYellow {
+  background: $npm-yellow;
+}
+
+.buttonRed {
+  background: $npm-red;
+  color: #fff;
+}
+
+.fadeUp {
+  animation: fadeUp 520ms ease both;
+}
+
+.fadeUpLate {
+  animation-delay: 100ms;
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 560px) {
+  .ctaRow {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .button {
+    width: 100%;
+    max-width: 320px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .button,
+  .fadeUp {
+    animation-duration: 1ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 1ms !important;
+  }
+}
