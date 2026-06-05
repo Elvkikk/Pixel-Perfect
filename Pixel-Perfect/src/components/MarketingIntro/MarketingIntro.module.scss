@@ -14,16 +14,8 @@ $npm-black: #231f20;
   overflow: hidden;
   color: #fff;
   text-align: center;
-  background:
-    linear-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 255, 255, 0.08) 1px, transparent 1px),
-    radial-gradient(circle at 15% 20%, rgba(255, 255, 255, 0.08), transparent 32%),
-    linear-gradient(135deg, #cb3837 0%, #b82e30 100%);
-  background-size:
-    34px 34px,
-    34px 34px,
-    100% 100%,
-    100% 100%;
+  min-height: 720px;
+  background: #cb3837;
 
   &::before,
   &::after {
@@ -36,14 +28,16 @@ $npm-black: #231f20;
 
   &::before {
     background:
-      linear-gradient(120deg, transparent 0 48%, rgba(255, 255, 255, 0.12) 48% 49%, transparent 49% 100%),
-      linear-gradient(60deg, transparent 0 51%, rgba(35, 31, 32, 0.12) 51% 52%, transparent 52% 100%);
-    background-size: 190px 110px;
-    opacity: 0.55;
+      linear-gradient(90deg, rgba(35, 31, 32, 0.5), rgba(35, 31, 32, 0.18) 48%, rgba(35, 31, 32, 0.48)),
+      linear-gradient(180deg, rgba(35, 31, 32, 0.46), rgba(35, 31, 32, 0.12) 42%, rgba(35, 31, 32, 0.5));
   }
 
   &::after {
-    background: radial-gradient(circle at 50% 45%, transparent 0 45%, rgba(35, 31, 32, 0.16) 100%);
+    background:
+      linear-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255, 255, 255, 0.08) 1px, transparent 1px);
+    background-size: 34px 34px;
+    opacity: 0.28;
   }
 }
 
@@ -52,7 +46,7 @@ $npm-black: #231f20;
   z-index: 1;
   max-width: 1040px;
   margin: 0 auto;
-  padding: 82px 24px 94px;
+  padding: 96px 24px 108px;
 
   h1 {
     margin: 0;
@@ -93,19 +87,19 @@ $npm-black: #231f20;
 
 .heroBackgroundArt {
   position: absolute;
-  right: max(24px, calc((100vw - 1120px) / 2));
-  bottom: 40px;
-  z-index: 0;
-  width: clamp(190px, 25vw, 360px);
-  height: auto;
-  opacity: 0.38;
+  inset: 0;
+  z-index: -1;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
   pointer-events: none;
 }
 
 .ctaRow {
   display: flex;
   justify-content: center;
-  gap: 18px;
+  gap: 16px;
   margin-top: 34px;
 }
 
@@ -117,21 +111,27 @@ $npm-black: #231f20;
   min-height: 58px;
   padding: 0 30px;
   color: $npm-black;
-  border: 2px solid transparent;
+  border: 3px solid transparent;
   border-radius: 999px;
   font-size: 18px;
   font-weight: 800;
   line-height: 1;
   text-decoration: none;
+
+  &:focus-visible {
+    outline: 3px solid #fff;
+    outline-offset: 4px;
+  }
 }
 
 .buttonYellow {
   background: #f7c94b;
   border-color: #f7c94b;
+  box-shadow: 0 12px 22px rgba(35, 31, 32, 0.22);
 }
 
 .buttonLight {
-  background: transparent;
+  background: #cb3837;
   border-color: #fff;
   color: #fff;
 }
@@ -158,23 +158,15 @@ $npm-black: #231f20;
 
 @media (max-width: 560px) {
   .heroMarketingSection {
-    background-size:
-      26px 26px,
-      26px 26px,
-      100% 100%,
-      100% 100%;
+    min-height: 680px;
   }
 
   .heroBackgroundArt {
-    right: 50%;
-    bottom: 24px;
-    width: 230px;
-    opacity: 0.16;
-    transform: translateX(50%);
+    object-position: 48% center;
   }
 
   .heroMarketingInner {
-    padding: 64px 18px 76px;
+    padding: 72px 18px 84px;
 
     h1 {
       font-size: clamp(44px, 15vw, 64px);

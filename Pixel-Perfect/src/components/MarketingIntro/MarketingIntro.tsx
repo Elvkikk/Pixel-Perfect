@@ -1,10 +1,10 @@
-import heroArt from '../../assets/hero.png'
+import heroBackground from '../../assets/hero-background.png'
 import styles from './MarketingIntro.module.scss'
 
 export function MarketingIntro() {
   return (
     <section className={styles.heroMarketingSection}>
-      <img className={styles.heroBackgroundArt} src={heroArt} alt="" aria-hidden="true" />
+      <img className={styles.heroBackgroundArt} src={heroBackground} alt="" aria-hidden="true" />
 
       <div className={styles.heroMarketingInner}>
         <div className={`${styles.contentNarrow} ${styles.fadeUp}`}>
