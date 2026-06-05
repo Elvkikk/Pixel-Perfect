@@ -1,4 +1,5 @@
 import styles from './SiteHeader.module.scss'
+import npmLogo from '../../assets/npm-logo.svg'
 
 export function SiteHeader() {
   return (
@@ -7,9 +8,6 @@ export function SiteHeader() {
 
       <header className={styles.siteHeader}>
         <div className={styles.topNav}>
-          <a className={styles.heartLink} href="#" aria-label="npm loves developers">
-            ❤
-          </a>
           <nav aria-label="Primary navigation">
             <a href="#">Pro</a>
             <a href="#">Teams</a>
@@ -20,7 +18,7 @@ export function SiteHeader() {
 
         <div className={styles.searchNav}>
           <a className={styles.npmMark} href="#" aria-label="npm home">
-            npm
+            <img src={npmLogo} alt="" />
           </a>
 
           <form className={styles.packageSearch} role="search">

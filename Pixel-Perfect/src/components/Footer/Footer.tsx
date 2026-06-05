@@ -1,4 +1,5 @@
 import styles from './Footer.module.scss'
+import npmLogo from '../../assets/npm-logo.svg'
 
 const linkGroups = [
   {
@@ -21,7 +22,7 @@ export function Footer() {
       <div className={styles.footerInner}>
         <div className={styles.footerBrand}>
           <a className={styles.footerMark} href="#" aria-label="npm home">
-            npm
+            <img src={npmLogo} alt="" />
           </a>
           <a className={styles.githubLink} href="#" aria-label="GitHub">
             <svg aria-hidden="true" viewBox="0 0 19 19">

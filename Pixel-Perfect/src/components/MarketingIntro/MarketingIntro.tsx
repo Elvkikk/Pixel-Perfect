@@ -1,33 +1,10 @@
-import { useRef } from 'react'
-import Antigravity from '../Antigravity'
+import heroArt from '../../assets/hero.png'
 import styles from './MarketingIntro.module.scss'
 
 export function MarketingIntro() {
-  const introSectionRef = useRef<HTMLElement>(null)
-
   return (
-    <section ref={introSectionRef} className={styles.heroMarketingSection}>
-      <div className={styles.antigravityLayer} aria-hidden="true">
-        <Antigravity
-          eventSource={introSectionRef}
-          count={300}
-          magnetRadius={6}
-          ringRadius={7}
-          waveSpeed={0.4}
-          waveAmplitude={0.75}
-          particleSize={1.25}
-          lerpSpeed={0.035}
-          color="#ffffff"
-          autoAnimate
-          particleVariance={0.7}
-          rotationSpeed={0}
-          depthFactor={1}
-          pulseSpeed={2}
-          particleShape="capsule"
-          fieldStrength={10}
-          opacity={0.2}
-        />
-      </div>
+    <section className={styles.heroMarketingSection}>
+      <img className={styles.heroBackgroundArt} src={heroArt} alt="" aria-hidden="true" />
 
       <div className={styles.heroMarketingInner}>
         <div className={`${styles.contentNarrow} ${styles.fadeUp}`}>

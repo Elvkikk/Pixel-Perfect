@@ -5,9 +5,7 @@ $border: #d2d2d2;
 
 .colorBar {
   height: 10px;
-  background: linear-gradient(90deg, #f7c94b 0 12%, #ef8236 12% 32%, #cb3837 32% 58%, #8956a4 58% 78%, #3fae52 78% 100%);
-  background-size: 160% 100%;
-  animation: colorShift 12s ease-in-out infinite alternate;
+  background: linear-gradient(90deg, #fb8817 0%, #ff4b01 35%, #c12127 70%, #e02aff 100%);
 }
 
 .siteHeader {
@@ -27,7 +25,7 @@ $border: #d2d2d2;
 
 .topNav {
   min-height: 54px;
-  justify-content: space-between;
+  justify-content: flex-start;
   border-bottom: 1px solid #eeeeee;
 
   nav {
@@ -44,16 +42,6 @@ $border: #d2d2d2;
   }
 }
 
-.heartLink {
-  font-size: 22px;
-  line-height: 1;
-  transition: transform 180ms ease;
-
-  &:hover {
-    transform: scale(1.08);
-  }
-}
-
 .searchNav {
   min-height: 74px;
   gap: 16px;
@@ -63,13 +51,15 @@ $border: #d2d2d2;
   display: inline-grid;
   place-items: center;
   width: 80px;
-  height: 32px;
+  height: 26px;
   flex: 0 0 auto;
-  background: $npm-red;
-  color: #fff;
-  font: 900 27px/1 ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
-  letter-spacing: -0.08em;
   text-decoration: none;
+
+  img {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
 }
 
 .packageSearch {
@@ -180,12 +170,6 @@ $border: #d2d2d2;
   padding: 12px 10px;
 }
 
-@keyframes colorShift {
-  to {
-    background-position: 100% 0;
-  }
-}
-
 @media (max-width: 840px) {
   .topNav {
     nav {
@@ -237,8 +221,6 @@ $border: #d2d2d2;
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .colorBar,
-  .heartLink,
   .packageSearch,
   .packageSearch button,
   .signUp {

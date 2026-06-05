@@ -5,6 +5,7 @@ import { SiteHeader } from './components/SiteHeader'
 
 function App() {
   return (
+    // Styled with Tailwindcss//
     <main className="min-h-screen bg-white text-[#231f20]">
       <SiteHeader />
       <MarketingIntro />

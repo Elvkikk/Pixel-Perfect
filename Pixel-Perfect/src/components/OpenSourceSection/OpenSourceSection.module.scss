@@ -47,24 +47,18 @@ $npm-black: #231f20;
 }
 
 .gearIcon {
-  width: 118px;
-  height: 118px;
+  display: block;
+  width: 142px;
+  max-width: 100%;
+  height: auto;
   filter:
     drop-shadow(0 2px 1px rgba(255, 255, 255, 0.82))
     drop-shadow(0 10px 12px rgba(35, 31, 32, 0.18));
-  animation: gearSpin 14s linear infinite;
-  transform-origin: center;
 }
 
 @keyframes softFloat {
   50% {
     transform: translateY(-6px);
-  }
-}
-
-@keyframes gearSpin {
-  to {
-    transform: rotate(360deg);
   }
 }
 
@@ -75,7 +69,6 @@ $npm-black: #231f20;
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .gearIcon,
   .gearIllustration {
     animation-duration: 1ms !important;
     animation-iteration-count: 1 !important;

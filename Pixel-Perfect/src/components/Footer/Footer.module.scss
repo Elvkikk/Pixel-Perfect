@@ -27,13 +27,15 @@ $border: #d2d2d2;
   display: inline-grid;
   place-items: center;
   width: 86px;
-  height: 34px;
+  height: 28px;
   align-self: start;
-  background: $npm-red;
-  color: #fff;
-  font: 900 28px/1 ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
-  letter-spacing: -0.08em;
   text-decoration: none;
+
+  img {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
 }
 
 .githubLink {
@@ -93,15 +95,7 @@ $border: #d2d2d2;
 
 .colorBar {
   height: 10px;
-  background: linear-gradient(90deg, #f7c94b 0 12%, #ef8236 12% 32%, #cb3837 32% 58%, #8956a4 58% 78%, #3fae52 78% 100%);
-  background-size: 160% 100%;
-  animation: colorShift 12s ease-in-out infinite alternate;
-}
-
-@keyframes colorShift {
-  to {
-    background-position: 100% 0;
-  }
+  background: linear-gradient(90deg, #fb8817 0%, #ff4b01 35%, #c12127 70%, #e02aff 100%);
 }
 
 @media (max-width: 720px) {
@@ -123,7 +117,6 @@ $border: #d2d2d2;
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .colorBar,
   .githubLink,
   .linkGrid a {
     animation-duration: 1ms !important;
